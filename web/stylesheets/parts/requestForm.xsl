@@ -38,37 +38,37 @@
                         </xsl:choose>
                         <fieldset>
                             <label class="form-label">Фамилия</label>
-                            <input class="form-control" name="surname" pattern="[А-Яа-я]{{2,32}}" type="text" placeholder="Иванов" required="true" value="Спящий" />
+                            <input class="form-control" name="surname" pattern="[А-Яа-я]{{2,32}}" type="text" placeholder="Иванов" required="true" />
                             <label class="form-label">Имя</label>
-                            <input class="form-control" name="name" pattern="[А-Яа-я]{{2,32}}" type="text"  placeholder="Иван" required="true" value="Дмитрий" />
+                            <input class="form-control" name="name" pattern="[А-Яа-я]{{2,32}}" type="text"  placeholder="Иван" required="true" />
                             <label class="form-label">Отчество</label>
-                            <input class="form-control" name="patronym" pattern="[А-Яа-я]{{2,32}}" type="text"  placeholder="Иванович" required="true" value="Иванович" />
+                            <input class="form-control" name="patronym" pattern="[А-Яа-я]{{2,32}}" type="text"  placeholder="Иванович" required="true" />
                             <label class="form-label">ИНН</label>
-                            <input class="form-control" name="inn"  pattern="(\d{{10}})|(\d{{12}})" type="text"  placeholder="3664069397" required="true" value="3664069397" />
+                            <input class="form-control" name="inn"  pattern="(\d{{10}})|(\d{{12}})" type="text"  placeholder="3664069397" required="true" />
                             <label>Дата рождения</label>
                             <input class="form-control" name="dateOfBirth" type="date"  required="true" value="2000-01-01"/>
                             <label class="pt-3">Паспорт</label>
                             <div class="input-group">
-                                <input class="form-control" name="passportSeries" pattern="\d{{4}}" type="text"  placeholder="Серия" required="true" value="9412"/>
-                                <input class="form-control" name="passportNumber" pattern="\d{{6}}" type="text"  placeholder="Номер" required="true" value="610321"/>
+                                <input class="form-control" name="passportSeries" pattern="\d{{4}}" type="text"  placeholder="Серия" required="true" />
+                                <input class="form-control" name="passportNumber" pattern="\d{{6}}" type="text"  placeholder="Номер" required="true" />
                             </div>
                             <div class="pb-3">
                                 <label>Дата выдачи</label>
-                                <input id="passportDate" class="form-control" name="passportDate" type="date" required="true"  value="2000-01-01"/>
+                                <input id="passportDate" class="form-control" name="passportDate" type="date" required="true"  />
                             </div>
                             <xsl:if test="$clientType = 'organization'">
                                 <h5 class="pt-3">Организация</h5>
                                 <div class="pb-2">
                                     <label>Название организации</label>
-                                    <input class="form-control" name="orgName" type="text" placeholder="Название организации" required="true" value="ООО Лазурные гвозди"/>
+                                    <input class="form-control" name="orgName" type="text" placeholder="Название организации" required="true" />
                                     <label>Адрес организации</label>
-                                    <input class="form-control" name="orgAddress" type="text"  placeholder="Адрес организации" required="true" value="127473, ГОРОД МОСКВА, УЛИЦА СЕЛЕЗНЕВСКАЯ, 11, СТР.3"/>
+                                    <input class="form-control" name="orgAddress" type="text"  placeholder="Адрес организации" required="true" />
                                     <label>ИНН</label>
-                                    <input class="form-control" name="orgINN" pattern="(\d{{10}})|(\d{{12}})" min="1" type="text"  placeholder="7727563778" required="true" value="7727563778"/>
+                                    <input class="form-control" name="orgINN" pattern="(\d{{10}})|(\d{{12}})" min="1" type="text"  placeholder="7727563778" required="true" />
                                     <label>ОГРН</label>
-                                    <input class="form-control" name="orgOGRN" pattern="\d{{13}}" type="text"  min="1" placeholder="1057749631994" required="true" value="1057749631994"/>
+                                    <input class="form-control" name="orgOGRN" pattern="\d{{13}}" type="text"  min="1" placeholder="1057749631994" required="true" />
                                     <label>КПП</label>
-                                    <input class="form-control" name="orgKPP" pattern="\d{{9}}" type="text"  min="1" placeholder="639095579" required="true" value="639095579"/>
+                                    <input class="form-control" name="orgKPP" pattern="\d{{9}}" type="text"  min="1" placeholder="639095579" required="true" />
                                 </div>
                                 <br/>
                             </xsl:if>
@@ -80,11 +80,11 @@
                                 <fieldset>
                                     <legend class="pt-3 pb-3">2. Параметры кредита</legend>
                                     <label>Дата открытия</label>
-                                    <input class="form-control" name="openDate" type="date" required="true"  value="2000-01-01"/>
+                                    <input class="form-control" name="openDate" type="date" required="true" />
                                     <label>Срок (мес.)</label>
-                                    <input class="form-control" name="termInMonths" type="text" min="1" required="true" value="5"/>
+                                    <input class="form-control" name="termInMonths" type="text" min="1" required="true" />
                                     <label>Сумма кредита ₽</label>
-                                    <input class="form-control" name="loanAmount" type="text" min="1000" required="true" value="100000"/>
+                                    <input class="form-control" name="loanAmount" type="text" min="1000" required="true" />
                                     <label>Вид платежа</label>
                                     <div class="form-group">
                                         <select size="1" class="form-control" name="loanPaymentSchedule">
@@ -101,11 +101,11 @@
                                 <fieldset>
                                     <legend class="pt-3 pb-3">2. Параметры вклада</legend>
                                     <label>Дата открытия</label>
-                                    <input class="form-control" name="openDate" type="date" required="true"  value="2000-01-01"/>
+                                    <input class="form-control" name="openDate" type="date" required="true" />
                                     <label>Срок (мес.)</label>
-                                    <input class="form-control" name="termInMonths" type="text"  min="1" required="true" value="5"/>
+                                    <input class="form-control" name="termInMonths" type="text"  min="1" required="true" />
                                     <label>Годовая ставка (%)</label>
-                                    <input class="form-control" name="depositRate" type="text" required="true" value="5"/>
+                                    <input class="form-control" name="depositRate" type="text" required="true" />
                                     <label>Периодичность капитализации</label>
                                     <select size="1" class="form-control" name="depositCapitalization">
                                         <option value="everyMonth" selected="true">Ежемесячно</option>
