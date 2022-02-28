@@ -25,22 +25,7 @@ $errors=$val->checkInputObjects($client,$product);
     } else {
         $dbGateway = App_DatabaseGateway::getInstance();
         $dbGateway->saveClientRequest($client,$product);
-
-        $xw = new XMLWriter();
-
-        $xw->openMemory();
-        $xw->setIndent(TRUE);
-        $xw->startDocument("1.0", "UTF-8");
-        $xw->writePi("xml-stylesheet", "type=\"text/xsl\" href=\"stylesheets/pageMain.xsl\"");
-
-        $xw->startElement('page');
-        $xw->writeElement('header');
-        $xw->writeElement('success');
-        $xw->writeElement('footer');
-        $xw->endElement();
-
-        $xw->endDocument();
-        header("Content-Type: text/xml");
-        echo $xw->flush();
+        header('Location: success.php');
+        exit;
     }
 }
