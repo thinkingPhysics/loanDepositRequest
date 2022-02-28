@@ -1,0 +1,44 @@
+body {
+    background-color:  #eef4f3;
+}
+label {
+    padding: 8px 0px 2px 0px;
+    margin: 0px 0px 0px 0px;
+}
+select {
+    overflow-y: auto;
+}
+input {
+    text-align: center;
+}
+
+.container {
+    font-family: "Verdana";
+}
+.mainMenu {
+    font-size: 24px;
+    font-family: "Calibri";
+}
+.pageTitle {
+    position: relative;
+    text-align: center;
+}
+.smallInput {
+    width: 120px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+.card {
+    background-color: #eef4f3;
+}
+.col-md-4 {
+    text-align: center;
+}
+
+.form-control {
+    text-align: center;
+}
+
+#regCard {
+    padding: 5px 25px 25px 25px;
+}
