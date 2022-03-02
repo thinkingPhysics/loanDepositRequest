@@ -25,6 +25,12 @@ $errors=$val->checkInputObjects($client,$product);
     } else {
         $dbGateway = App_DatabaseGateway::getInstance();
         $dbGateway->saveClientRequest($client,$product);
+
+        $spy = new App_Spy();
+        $user = new App_User();
+
+        $spy->writeLog($user,$dbGateway);
+
         header('Location: success.php');
         exit;
     }

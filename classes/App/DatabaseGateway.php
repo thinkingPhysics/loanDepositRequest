@@ -105,5 +105,21 @@ class App_DatabaseGateway implements App_IStorageIO
         return $data;
     }
 
+    public function logSession($user) {
+        try {
+        $sql = "INSERT INTO sessions (ip,ipForwarded,userAgent,session) VALUES (?,?,?,?)";
+        $stmt = $this->pdo->prepare($sql);
+        $this->pdo->beginTransaction();
+        $stmt->execute([
+            $user->ip,
+            $user->ipForwarded,
+            $user->userAgent,
+            $user->session,
+        ]);
+        $this->pdo->commit();
+        }
+        catch (SomeException $e) {}
+    }
+
 
 }
