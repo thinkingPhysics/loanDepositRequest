@@ -3,6 +3,7 @@
 class App_DatabaseGateway implements App_IStorageIO
 {
     private static $instances = [];
+    private $lastID;
 
     protected function __clone() {
 
@@ -60,6 +61,7 @@ class App_DatabaseGateway implements App_IStorageIO
                 $client->orgKPP
             ]);
             $product->clientID = $this->pdo->lastInsertId();
+            $this->lastID = $product->clientID;
 
             $sql = "INSERT INTO products (clientID, productType, openDate, closeDate, termInMonths,
                                           depositRate, depositCapitalization, loanAmount, loanPaymentSchedule) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -107,19 +109,19 @@ class App_DatabaseGateway implements App_IStorageIO
 
     public function logSession($user) {
         try {
-        $sql = "INSERT INTO sessions (ip,ipForwarded,userAgent,session) VALUES (?,?,?,?)";
-        $stmt = $this->pdo->prepare($sql);
-        $this->pdo->beginTransaction();
-        $stmt->execute([
-            $user->ip,
-            $user->ipForwarded,
-            $user->userAgent,
-            $user->session,
-        ]);
-        $this->pdo->commit();
+            $user->clientID = $this->lastID;
+            $sql = "INSERT INTO sessions (clientID, ip,ipForwarded,userAgent,session) VALUES (?,?,?,?,?)";
+            $stmt = $this->pdo->prepare($sql);
+            $this->pdo->beginTransaction();
+            $stmt->execute([
+                $user->clientID,
+                $user->ip,
+                $user->ipForwarded,
+                $user->userAgent,
+                $user->session,
+            ]);
+            $this->pdo->commit();
         }
         catch (SomeException $e) {}
     }
-
-
 }

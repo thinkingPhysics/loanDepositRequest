@@ -3,7 +3,7 @@
 
 class App_User
 {
-
+    public $clientID;
     public $ip;
     public $ipForwarded;
     public $userAgent;
