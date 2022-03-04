@@ -38,11 +38,11 @@
                         </xsl:choose>
                         <fieldset>
                             <label class="form-label">Фамилия</label>
-                            <input class="form-control" name="surname" pattern="[А-Яа-я]{{2,32}}" type="text" placeholder="Иванов" required="true" />
+                            <input class="form-control" name="surname" pattern="(([a-zA-Z' -]{{1,33}})|([а-яА-ЯЁё-]{{1,33}}))" type="text" placeholder="Иванов" required="true" />
                             <label class="form-label">Имя</label>
-                            <input class="form-control" name="name" pattern="[А-Яа-я]{{2,32}}" type="text"  placeholder="Иван" required="true" />
+                            <input class="form-control" name="name" pattern="(([a-zA-Z' -]{{1,33}})|([а-яА-ЯЁё-]{{1,33}}))" type="text"  placeholder="Иван" required="true" />
                             <label class="form-label">Отчество</label>
-                            <input class="form-control" name="patronym" pattern="[А-Яа-я]{{2,32}}" type="text"  placeholder="Иванович" required="true" />
+                            <input class="form-control" name="patronym" pattern="(([a-zA-Z' -]{{1,33}})|([а-яА-ЯЁё-]{{1,33}}))" type="text"  placeholder="Иванович" required="true" />
                             <label class="form-label">ИНН</label>
                             <input class="form-control" name="inn"  pattern="(\d{{10}})|(\d{{12}})" type="text"  placeholder="3664069397" required="true" />
                             <label>Дата рождения</label>

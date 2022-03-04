@@ -1,6 +1,6 @@
 <?php
 
-class App_DatabaseGateway implements App_IStorageIO
+class App_DatabaseGateway implements App_IStorageIO, App_ILogger
 {
     private static $instances = [];
     private $lastID;
