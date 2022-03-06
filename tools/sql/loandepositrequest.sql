@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `clients` (
   `clientID` int NOT NULL COMMENT 'Уникальный ID клиента',
-  `clientType` enum('client','organization') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Тип клиента: ФЛ (client) или ЮЛ (organization)',
+  `clientType` enum('client','organization') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Тип клиента: ФЛ (client) или ЮЛ (organization)',
   `surname` tinytext NOT NULL COMMENT 'Фамилия',
   `name` tinytext NOT NULL COMMENT 'Имя',
   `patronym` tinytext NOT NULL COMMENT 'Отчество',
@@ -43,7 +43,7 @@ CREATE TABLE `clients` (
   `orgOGRN` bigint DEFAULT NULL,
   `orgINN` bigint DEFAULT NULL,
   `orgKPP` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `clients`
@@ -61,15 +61,15 @@ INSERT INTO `clients` (`clientID`, `clientType`, `surname`, `name`, `patronym`, 
 CREATE TABLE `products` (
   `clientID` int NOT NULL COMMENT 'ID клиента',
   `productID` int NOT NULL COMMENT 'ID продукта',
-  `productType` enum('loan','deposit') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Тип продукта (вклад или кредит)',
+  `productType` enum('loan','deposit') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Тип продукта (вклад или кредит)',
   `openDate` date NOT NULL COMMENT 'Дата открытия',
   `closeDate` date NOT NULL COMMENT 'Дата закрытия',
   `termInMonths` smallint NOT NULL COMMENT 'Срок действия продукта',
   `depositRate` decimal(10,0) DEFAULT NULL COMMENT 'Годовая ставка по вкладу',
-  `depositCapitalization` enum('everyMonth','onClose') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'Тип капитализации по вкладу (ежемесячно/только при закрытии)',
+  `depositCapitalization` enum('everyMonth','onClose') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Тип капитализации по вкладу (ежемесячно/только при закрытии)',
   `loanAmount` bigint DEFAULT NULL COMMENT 'Сумма кредита',
-  `loanPaymentSchedule` enum('annuitet','diff') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'График платежей по кредиту'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `loanPaymentSchedule` enum('annuitet','diff') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'График платежей по кредиту'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `products`
@@ -87,12 +87,12 @@ INSERT INTO `products` (`clientID`, `productID`, `productType`, `openDate`, `clo
 CREATE TABLE `sessions` (
   `ID` int NOT NULL,
   `clientID` int NOT NULL,
-  `ip` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `ipForwarded` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `userAgent` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `session` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `ip` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `ipForwarded` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `userAgent` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `session` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `sessions`
