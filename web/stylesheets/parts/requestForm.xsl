@@ -46,7 +46,7 @@
                             <label class="form-label">ИНН</label>
                             <input class="form-control" name="inn"  pattern="(\d{{10}})|(\d{{12}})" type="text"  placeholder="3664069397" required="true" />
                             <label>Дата рождения</label>
-                            <input class="form-control" name="dateOfBirth" type="date"  required="true" value="2000-01-01"/>
+                            <input class="form-control" name="dateOfBirth" type="date"  required="true" value="2000-01-01" />
                             <label class="pt-3">Паспорт</label>
                             <div class="input-group">
                                 <input class="form-control" name="passportSeries" pattern="\d{{4}}" type="text"  placeholder="Серия" required="true" />
@@ -54,7 +54,7 @@
                             </div>
                             <div class="pb-3">
                                 <label>Дата выдачи</label>
-                                <input id="passportDate" class="form-control" name="passportDate" type="date" required="true"  />
+                                <input id="passportDate" class="form-control" name="passportDate" type="date" required="true" />
                             </div>
                             <xsl:if test="$clientType = 'organization'">
                                 <h5 class="pt-3">Организация</h5>

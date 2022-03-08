@@ -22,6 +22,7 @@ class App_ValidationFacade
         $this->validator->validateNameSurnameEtc([$client->name, $client->surname, $client->patronym]);
         $this->validator->validateINN($client->inn);
         $this->validator->validatePassport($client->passportSeries, $client->passportNumber);
+        $this->validator->validateDates([$client->dateOfBirth, $client->passportDate, $product->openDate, $product->closeDate]);
 
         if ($client->clientType == 'organization') {
             $this->validator->validateINN($client->orgINN);

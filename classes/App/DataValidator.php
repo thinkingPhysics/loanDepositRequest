@@ -100,4 +100,18 @@ class App_DataValidator
         }
         return $booleanResult;
     }
+
+    function validateDates(array $dates, $format = 'Y-m-d')
+    {
+        foreach ($dates as $date) {
+            $d = DateTime::createFromFormat($format, $date);
+            $booleanResult = ($d and $d->format($format) === $date);
+            if ($booleanResult === false) {
+                $this->errors[] = "Указанная дата некорректна";
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
