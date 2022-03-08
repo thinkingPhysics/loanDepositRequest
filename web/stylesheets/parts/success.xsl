@@ -22,8 +22,8 @@
             <div>
                 <div class="mb-5">
                     <h2 class="mb-3">Ожидайте рассмотрения в течение 2 (двух) рабочих дней</h2>
-                    <img src="img/smile.png"></img><br/>
-                    <a href="index.php">На главную</a>
+                    <img src="img/smile.png" class="smile mt-4 mb-5" width="150"></img><br/>
+                    <a href="index.php" class="btn btn-primary w-25">На главную</a>
                 </div>
             </div>
         </div>

@@ -4,16 +4,19 @@ class App_ValidationFacade
 {
     public $validator;
 
-    public function __construct() {
-       $this->validator = new App_DataValidator();
+    public function __construct()
+    {
+        $this->validator = new App_DataValidator();
     }
 
-    public function checkRequestForFields(array $array, array $fields) {
-        $result=$this->validator->checkArrayForKeys($array, $fields);
+    public function checkRequestForFields(array $array, array $fields)
+    {
+        $result = $this->validator->checkArrayForKeys($array, $fields);
         return $result;
     }
 
-    public function checkInputObjects($client,$product) {
+    public function checkInputObjects($client, $product)
+    {
         $this->validator->checkPropertiesIsNotNull($client);
         $this->validator->checkPropertiesIsNotNull($product);
         $this->validator->validateNameSurnameEtc([$client->name, $client->surname, $client->patronym]);

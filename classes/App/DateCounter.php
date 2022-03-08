@@ -2,7 +2,7 @@
 
 class App_DateCounter
 {
-    public function addMonthsToDate($date,$months)
+    public function addMonthsToDate($date, $months)
     {
         $date = new DateTime($date);
         $date->modify($months . ' month');

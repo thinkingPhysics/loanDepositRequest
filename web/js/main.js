@@ -1,7 +1,7 @@
 (function () {
     'use strict'
 
-   let forms = document.querySelectorAll('.needs-validation')
+    let forms = document.querySelectorAll('.needs-validation')
 
     Array.prototype.slice.call(forms)
         .forEach(function (form) {

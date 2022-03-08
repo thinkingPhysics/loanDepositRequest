@@ -5,9 +5,11 @@ class App_DatabaseGateway implements App_IStorageIO, App_ILogger
     private static $instances = [];
     private $lastID;
 
-    protected function __clone() {
+    protected function __clone()
+    {
 
     }
+
     public function __wakeup()
     {
         throw new \Exception("Невозможно десериализовать (реализация паттерна Singleton)");
@@ -15,7 +17,7 @@ class App_DatabaseGateway implements App_IStorageIO, App_ILogger
 
     protected function __construct()
     {
-        $conf=parse_ini_file('../conf/config.ini');
+        $conf = parse_ini_file('../conf/config.ini');
         $dsn = "mysql:host={$conf['host']};dbname={$conf['db']};charset={$conf['charset']}";
         $opt = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -37,7 +39,8 @@ class App_DatabaseGateway implements App_IStorageIO, App_ILogger
 
     public function saveClientRequest($client, $product)
     {
-        if ($client->clientType=="client") {}
+        if ($client->clientType == "client") {
+        }
         try {
             $sql = "INSERT INTO clients (clientType, surname, name, patronym, inn, dateOfBirth, passportSeries, passportNumber, passportDate,
                                         orgName, orgAddress, orgOGRN, orgINN, orgKPP) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -69,12 +72,12 @@ class App_DatabaseGateway implements App_IStorageIO, App_ILogger
 
             switch ($product->productType) {
                 case 'loan':
-                    $product->depositRate=NULL;
-                    $product->depositCapitalization=NULL;
+                    $product->depositRate = NULL;
+                    $product->depositCapitalization = NULL;
                     break;
                 case 'deposit':
-                    $product->loanAmount=NULL;
-                    $product->loanPaymentSchedule=NULL;
+                    $product->loanAmount = NULL;
+                    $product->loanPaymentSchedule = NULL;
                     break;
             }
             $stmt->execute([
@@ -98,7 +101,7 @@ class App_DatabaseGateway implements App_IStorageIO, App_ILogger
 
     public function getAllRequests()
     {
-    //  $sql = "SELECT * FROM LIST ORDER BY clientID DESC LIMIT ?,?";
+        //  $sql = "SELECT * FROM LIST ORDER BY clientID DESC LIMIT ?,?";
         $sql = "SELECT * FROM clients";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
@@ -107,7 +110,8 @@ class App_DatabaseGateway implements App_IStorageIO, App_ILogger
         return $data;
     }
 
-    public function logSession($user) {
+    public function logSession($user)
+    {
         try {
             $user->clientID = $this->lastID;
             $sql = "INSERT INTO sessions (clientID, ip,ipForwarded,userAgent,session) VALUES (?,?,?,?,?)";
@@ -121,7 +125,7 @@ class App_DatabaseGateway implements App_IStorageIO, App_ILogger
                 $user->session,
             ]);
             $this->pdo->commit();
+        } catch (SomeException $e) {
         }
-        catch (SomeException $e) {}
     }
 }

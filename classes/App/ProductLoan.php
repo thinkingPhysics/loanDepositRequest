@@ -14,7 +14,7 @@ class App_ProductLoan extends App_Product
             $this->loanAmount = $_POST['loanAmount'];
             $this->loanPaymentSchedule = $_POST['loanPaymentSchedule'];
             $counter = new App_DateCounter();
-            $this->closeDate=$counter->addMonthsToDate($this->openDate,$this->termInMonths);
-            }
+            $this->closeDate = $counter->addMonthsToDate($this->openDate, $this->termInMonths);
+        }
     }
 }

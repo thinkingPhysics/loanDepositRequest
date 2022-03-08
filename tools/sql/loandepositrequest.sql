@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Структура таблицы `clients`
 --
-
+DROP TABLE IF EXISTS `clients`;
 CREATE TABLE `clients` (
   `clientID` int NOT NULL COMMENT 'Уникальный ID клиента',
   `clientType` enum('client','organization') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Тип клиента: ФЛ (client) или ЮЛ (organization)',
@@ -57,7 +57,7 @@ INSERT INTO `clients` (`clientID`, `clientType`, `surname`, `name`, `patronym`, 
 --
 -- Структура таблицы `products`
 --
-
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `clientID` int NOT NULL COMMENT 'ID клиента',
   `productID` int NOT NULL COMMENT 'ID продукта',
@@ -83,7 +83,7 @@ INSERT INTO `products` (`clientID`, `productID`, `productType`, `openDate`, `clo
 --
 -- Структура таблицы `sessions`
 --
-
+DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE `sessions` (
   `ID` int NOT NULL,
   `clientID` int NOT NULL,
