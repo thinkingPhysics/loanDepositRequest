@@ -8,7 +8,6 @@ if (!$isRequestFieldsSet) {
 }
 if ($_POST and $_GET) {
     $client = new App_Client();
-
     switch ($_GET['productType']) {
         case 'loan':
             $product = new App_ProductLoan();
@@ -19,18 +18,17 @@ if ($_POST and $_GET) {
     }
     $errors = $val->checkInputObjects($client, $product);
     if ($errors) {
+        echo "<h1>Обнаружены ошибки:</h1><ul>";
         foreach ($errors as $error) {
-            echo $error . "<br>";
+            echo "<li>" . $error . "</li>";
         }
+        echo "</ul>";
     } else {
         $dbGateway = App_DatabaseGateway::getInstance();
         $dbGateway->saveClientRequest($client, $product);
-
         $spy = new App_Spy();
         $user = new App_User();
-
         $spy->writeLog($user, $dbGateway);
-
         header('Location: success.php');
         exit;
     }
